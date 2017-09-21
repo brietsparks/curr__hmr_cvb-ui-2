@@ -5,7 +5,7 @@ import withAuthContext from '../contextConsumerHOC';
 export class AuthGuard extends Component {
 
   render() {
-    const { userIsAuthenticated, guestRender } = this.props;
+    const { userIsAuthenticated, guestRender, showLogin } = this.props;
 
     return userIsAuthenticated
       ? <span>{ this.props.children }</span>
