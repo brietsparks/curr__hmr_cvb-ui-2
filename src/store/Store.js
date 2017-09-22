@@ -13,6 +13,7 @@ const initStore = ({
 
   Object.assign(reducers, stateReducers);
 
+  // todo: still not able to easily manipulate middlewares array from calling location
   configureMiddlewares(middlewares);
 
   return createStore(
