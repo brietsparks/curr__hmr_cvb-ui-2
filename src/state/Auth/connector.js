@@ -5,7 +5,6 @@ import { stateKey } from './constants';
 import * as actions from './actions';
 
 const mapStateToProps = state => {
-  // the auth state from the root state
   return state[stateKey];
 };
 

@@ -18,6 +18,7 @@ export class AuthContainer extends Component {
 
   componentDidMount() {
     if (!this.props.user.initialized) {
+      console.log(this.props);
       this.props.initializeUser();
     }
   }
@@ -34,13 +35,20 @@ export class AuthContainer extends Component {
 
     //
     return (
-      <AuthContextProvider
-        userId={user.id}
-        userIsAuthenticated={checkUserIsAuthenticated(user)}
-        userScopes={getUserScopes(user)}
-      >
-        {childrenWithAuthActions}
-      </AuthContextProvider>
+      user.initialized
+        ? (
+          <AuthContextProvider
+            userId={user.id}
+            userIsAuthenticated={!!user.id}
+            userScopes={getUserScopes(user)}
+          >
+            {childrenWithAuthActions}
+          </AuthContextProvider>
+        )
+        : (
+          <p>Loading</p>
+        )
+
     );
   }
 }

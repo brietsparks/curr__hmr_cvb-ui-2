@@ -7,7 +7,7 @@ import {
   AUTH0_RESUME_SERVICE_AUD_ID
 } from '../parameters';
 
-export const webAuth_ = new auth0.WebAuth({
+export const webAuth = new auth0.WebAuth({
   domain: AUTH0_DOMAIN,
   clientID: AUTH0_CLIENT_ID,
   redirectUri: AUTH0_CALLBACK_URL,
