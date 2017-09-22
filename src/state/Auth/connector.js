@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import createConnector from '../createConnector';
+import createConnector from '../createReduxConnector';
 
 import { stateKey } from './constants';
 import * as actions from './actions';

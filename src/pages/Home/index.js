@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AuthContainer from '../../containers/Auth';
-import ProjectTree from '../../containers/ProjectTree';
+import ProjectTreeContainer from '../../containers/ProjectTree';
 
 import Dummy from '../../components/Dummy';
 
@@ -11,7 +11,7 @@ export const Home = () => {
       <h1>Home Page</h1>
       
       <AuthContainer>
-        <Dummy/>
+        <ProjectTreeContainer/>
       </AuthContainer>
     </div>
   )

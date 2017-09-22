@@ -1,16 +1,24 @@
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import Store from './Store';
+
+import { stateKey as apolloKey } from '../state/Apollo/constants';
+import ApolloClient from './ApolloClient';
 
 import { stateKey as routingKey } from '../state/Routing/constants';
 import { history } from '../routing';
 
-import Store from './Store';
+export const apolloClient = ApolloClient();
 
-export default Store({
+export const store = Store({
   initialState: {},
   reducers: {
-    [routingKey]: routerReducer
+    [apolloKey]: apolloClient.reducer(),
+    [routingKey]: routerReducer,
   },
-  middlewares: [
-    routerMiddleware(history)
-  ],
+  configureMiddlewares: middlewares => {
+    middlewares.push(apolloClient.middleware());
+    middlewares.push(routerMiddleware(history));
+  },
 });
+
+export default store;

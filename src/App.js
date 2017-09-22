@@ -1,18 +1,18 @@
 import 'isomorphic-fetch';
 import React from 'react';
-import { Provider } from 'react-redux'
+import { ApolloProvider } from 'react-apollo';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { Routes, history } from './routing';
-import store from './store';
+import store, { apolloClient } from './store';
 
 export const App = () => {
   return (
-    <Provider store={store}>
+    <ApolloProvider store={store} client={apolloClient}>
       <ConnectedRouter history={history}>
         <Routes/>
       </ConnectedRouter>
-    </Provider>
+    </ApolloProvider>
   );
 };
 

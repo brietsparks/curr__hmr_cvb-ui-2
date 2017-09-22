@@ -39,12 +39,10 @@ const failure = ({ userId, error }) => {
 };
 
 const success = ({ userId, result }) => {
-  const {  } = result;
+  const projects = result.data.ProjectsByUserId;
 
   return {
     type: actions.projects.fetch.AFTER.SUCCESS,
-    payload: {
-      userId,
-    }
+    payload: { userId, projects }
   }
 };

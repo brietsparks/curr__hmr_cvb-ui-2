@@ -8,16 +8,18 @@ import middlewares from '../middleware/redux';
 const initStore = ({
   initialState = {},
   reducers = {},
-  configureMiddlewares = mw => mw
+  configureMiddlewares
 }) => {
 
   Object.assign(reducers, stateReducers);
+
+  configureMiddlewares(middlewares);
 
   return createStore(
     combineReducers(reducers),
     initialState,
     composeWithDevTools(
-      applyMiddleware.apply(this, configureMiddlewares(middlewares))
+      applyMiddleware.apply(this, middlewares)
     )
   );
 };

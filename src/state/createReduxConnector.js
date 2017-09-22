@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export const createConnector = (mapStateToProps, mapDispatchToProps) => InnerComponent => {
+export const createReduxConnector = (mapStateToProps, mapDispatchToProps) => InnerComponent => {
 
   const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(InnerComponent);
 
@@ -14,4 +14,4 @@ export const createConnector = (mapStateToProps, mapDispatchToProps) => InnerCom
   };
 };
 
-export default createConnector;
+export default createReduxConnector;

@@ -35,6 +35,7 @@ export class AuthContainer extends Component {
     //
     return (
       <AuthContextProvider
+        userId={user.id}
         userIsAuthenticated={checkUserIsAuthenticated(user)}
         userScopes={getUserScopes(user)}
       >

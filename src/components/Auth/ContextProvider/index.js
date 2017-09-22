@@ -4,14 +4,23 @@ import PropTypes from 'prop-types';
 export default class AuthContextProvider extends Component {
 
   static childContextTypes = {
+    userId: PropTypes.string,
     userIsAuthenticated: PropTypes.bool,
     userScopes: PropTypes.arrayOf(PropTypes.string)
   };
 
   getChildContext() {
-    const { userIsAuthenticated, userScopes } = this.props;
+    const {
+      userId,
+      userIsAuthenticated,
+      userScopes
+    } = this.props;
 
-    return { userIsAuthenticated, userScopes };
+    return {
+      userId,
+      userIsAuthenticated,
+      userScopes
+    };
   }
 
   render() {
