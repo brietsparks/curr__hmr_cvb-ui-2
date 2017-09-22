@@ -1,0 +1,7 @@
+#import "../fragments/ProjectFields.graphql"
+
+query ($user_id: String!) {
+    getProjectsByUserId(user_id: $user_id) {
+        ...ProjectFields
+    }
+}

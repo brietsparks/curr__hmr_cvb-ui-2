@@ -1,0 +1,12 @@
+#import "./ContributionFields.graphql"
+
+fragment ProjectFields on Project {
+    id,
+    parent_id,
+    user_id,
+    subtitle,
+    title,
+    contributions {
+        ...ContributionFields
+    }
+}

@@ -1,0 +1,7 @@
+fragment SkillFields on Skill {
+    id,
+    canonical_name,
+    description,
+    aliases,
+    urls
+}

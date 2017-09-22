@@ -3,6 +3,9 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
+    //
+
     'react-hot-loader/patch',
     // activate HMR for React
 
@@ -39,6 +42,11 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      }
     ],
   },
 

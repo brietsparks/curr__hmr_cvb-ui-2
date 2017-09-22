@@ -1,0 +1,15 @@
+#import "../fragments/ProjectFields.graphql"
+
+mutation createProject(
+    $user_id: String!,
+    $parent_id: Int,
+    $title: String!
+) {
+    createProject(
+        user_id: $user_id,
+        parent_id: $parent_id,
+        title: $title
+    ) {
+        ...ProjectFields
+    }
+}

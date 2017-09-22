@@ -1,0 +1,5 @@
+fragment SampleFields on Sample {
+    id,
+    contribution_id,
+    value
+}

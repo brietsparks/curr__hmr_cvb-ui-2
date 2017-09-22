@@ -1,0 +1,9 @@
+#import "./SkillFields.graphql"
+
+fragment UtilizationFields on Utilization {
+    id,
+    contribution_id,
+    skill {
+        ...SkillFields
+    }
+}

@@ -9,11 +9,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addSkillCriterion: ({ projectId, skillId }) =>
-      dispatch(actions.addSkillCriterion({ projectId, skillId })),
-
-    removeSkillCriterion: ({ projectId, skillId }) =>
-      dispatch(actions.removeSkillCriterion({ projectId, skillId }))
   }
 };
 

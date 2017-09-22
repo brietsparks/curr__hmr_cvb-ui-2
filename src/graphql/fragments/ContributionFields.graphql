@@ -1,0 +1,15 @@
+#import "./SampleFields.graphql"
+#import "./UtilizationFields.graphql"
+
+fragment ContributionFields on Contribution {
+    id,
+    parent_id,
+    short_summary,
+    long_summary,
+    samples {
+        ...SampleFields
+    },
+    utilizations {
+        ...UtilizationFields
+    }
+}
