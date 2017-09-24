@@ -1,18 +1,28 @@
 import Context from 'easy-context';
+import PropTypes from 'prop-types';
 
-import { stateKey } from './constants';
+import { stateKey as authStateKey } from './constants';
 import authStateShape from './shape';
 import * as actions from './actions';
 
+import { stateKey as routingStateKey } from '../Routing/constants';
+
 const AuthContext = new Context({
   propTypes: {
-    user: authStateShape.user
+    user: authStateShape.user,
+    currentRoute: PropTypes.string
   },
+
   mapStateToContext: (state) => {
-    const userState = state[stateKey];
+    const userState = state[authStateKey];
+    const routingState = state[routingStateKey];
+
+    // todo: current route is null because it is not updating after router initial location change, see: https://github.com/react-boilerplate/react-boilerplate/issues/1380
+    const currentRoute = routingState.location ? routingState.location.pathname : '/home';
 
     return {
       user: userState.user,
+      currentRoute
     }
   },
   mapDispatchToPublisherProps: (dispatch) => {
@@ -25,6 +35,7 @@ const AuthContext = new Context({
   },
 });
 
+
 export const AuthContextProvider = AuthContext.Provider;
-export const subscribeToAuthContext = AuthContext.subscriber;
 export const publishToAuthContext = AuthContext.publisher;
+export const subscribeToAuthContext = AuthContext.subscriber;

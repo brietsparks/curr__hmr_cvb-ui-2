@@ -11,14 +11,12 @@ import Dummy from '../../components/Dummy';
 
 export const ProjectTreeContainer = props => {
 
-  const { currentRoute } = props;
-
   return (
     <div>
       <h2>Project Tree Container</h2>
 
       <RequireAuthentication guestRender={
-        () => <LoginButton onLoginSuccessRoute={currentRoute} />
+        () => <LoginButton />
       }>
         <Dummy/>
       </RequireAuthentication>
