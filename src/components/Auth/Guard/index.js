@@ -1,8 +1,10 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 
-import { subscribeToAuthContext } from '../../../state/Auth/context';
+// import { compose } from 'redux';
+// import { subscribeToAuthContext } from '../../../state/Auth/context';
 
+import connectToAuthStore from '../../../state/Auth/connector';
 
 const propTypes = {
   user: PropTypes.shape({
@@ -22,4 +24,4 @@ export const AuthGuard = props => {
 
 AuthGuard.propTypes = propTypes;
 
-export default subscribeToAuthContext(AuthGuard);
+export default connectToAuthStore(AuthGuard);

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 
 import { onLoginSuccessRouteKey } from './constants';
 
-import { publishToAuthContext, subscribeToAuthContext } from '../../state/Auth/context';
+// import { compose } from 'redux';
+// import { publishToAuthContext, subscribeToAuthContext } from '../../state/Auth/context';
+
+import connectToAuthStore from '../../state/Auth/connector';
 
 
 class Callback extends Component {
@@ -31,10 +33,7 @@ class Callback extends Component {
   }
 }
 
-export default compose(
-  publishToAuthContext,
-  subscribeToAuthContext,
-)(Callback);
+export default connectToAuthStore(Callback);
 
 
 const style = {

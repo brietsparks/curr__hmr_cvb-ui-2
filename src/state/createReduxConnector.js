@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export const createReduxConnector = (mapStateToProps, mapDispatchToProps) => InnerComponent => {
+export const createStoreConnector = (mapStateToProps, mapDispatchToProps) => InnerComponent => {
 
   const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(InnerComponent);
 
@@ -14,4 +14,10 @@ export const createReduxConnector = (mapStateToProps, mapDispatchToProps) => Inn
   };
 };
 
-export default createReduxConnector;
+export default createStoreConnector;
+
+export const createStateConnector = mapStateToProps =>
+  createStoreConnector(mapStateToProps, dispatch => ({}));
+
+export const createActionsConnector = mapDispatchToProps =>
+  createActionsConnector(state => ({}), mapDispatchToProps);

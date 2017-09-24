@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 
-import { subscribeToAuthContext, publishToAuthContext } from '../../../state/Auth/context';
+// import { subscribeToAuthContext, publishToAuthContext } from '../../../state/Auth/context';
+import connectToAuthStore from '../../../state/Auth/connector';
 
 const propTypes = {
   showLogin: PropTypes.func.isRequired,
@@ -21,7 +21,4 @@ export const LoginCTAButton = ({ showLogin, currentRoute }) => {
 
 LoginCTAButton.propTypes = propTypes;
 
-export default compose(
-  publishToAuthContext,
-  subscribeToAuthContext
-)(LoginCTAButton);
+export default connectToAuthStore(LoginCTAButton);
