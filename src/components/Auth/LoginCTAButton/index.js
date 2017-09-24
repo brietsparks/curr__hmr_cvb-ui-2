@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { subscribeToAuthContext, publishToAuthContext } from '../../../state/Auth/context';
 import connectToAuthStore from '../../../state/Auth/connector';
 
 const propTypes = {

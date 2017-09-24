@@ -1,9 +1,6 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 
-// import { compose } from 'redux';
-// import { subscribeToAuthContext } from '../../../state/Auth/context';
-
 import connectToAuthStore from '../../../state/Auth/connector';
 
 const propTypes = {

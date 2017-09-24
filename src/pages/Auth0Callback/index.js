@@ -3,11 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import { onLoginSuccessRouteKey } from './constants';
 
-// import { compose } from 'redux';
-// import { publishToAuthContext, subscribeToAuthContext } from '../../state/Auth/context';
-
 import connectToAuthStore from '../../state/Auth/connector';
-
 
 class Callback extends Component {
   componentWillMount() {

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { compose } from 'redux';
-// import { subscribeToAuthContext, publishToAuthContext } from '../../../state/Auth/context';
-
 import connectToAuthStore from '../../../state/Auth/connector';
 
 export class UserInitializer extends Component {
