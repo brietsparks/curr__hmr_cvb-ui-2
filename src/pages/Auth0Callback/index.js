@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import connectToAuthState from '../../state/Auth/connector';
+import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
+
+import { onLoginSuccessRouteKey } from './constants';
+
+import { publishToAuthContext, subscribeToAuthContext } from '../../state/Auth/context';
+
 
 class Callback extends Component {
   componentWillMount() {
@@ -7,16 +13,28 @@ class Callback extends Component {
   }
 
   render() {
+    const { user } = this.props;
+
+    const onLoginSuccessRoute = localStorage.getItem(onLoginSuccessRouteKey);
+
     return (
       <div style={style}>
         <p>Logging in...</p>
+
+        { user && user.id &&
+          <Redirect to={onLoginSuccessRoute}/>
+        }
+
         {/*<img src={loading} alt="loading"/>*/}
       </div>
     );
   }
 }
 
-export default connectToAuthState(Callback);
+export default compose(
+  publishToAuthContext,
+  subscribeToAuthContext,
+)(Callback);
 
 
 const style = {

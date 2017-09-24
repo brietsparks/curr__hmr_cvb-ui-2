@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import { publishToAuthContext } from '../../../state/Auth/context';
 
 const propTypes = {
-  showLogin: PropTypes.func.isRequired
+  showLogin: PropTypes.func.isRequired,
+  onLoginSuccessRoute: PropTypes.string.isRequired,
 };
 
-export const LoginCTAButton = ({ showLogin, onSuccessRedirect }) => {
-  onSuccessRedirect = onSuccessRedirect || '/';
+export const LoginCTAButton = ({ showLogin, onLoginSuccessRoute }) => {
   return (
     <div>
-      <button onClick={ () => showLogin({ onSuccessRedirect }) }>Login</button>
+      <p>Redirect: {onLoginSuccessRoute}</p>
+      <button onClick={ () => showLogin({ onLoginSuccessRoute }) }>Login</button>
     </div>
   );
 };

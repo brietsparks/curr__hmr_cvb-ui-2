@@ -1,2 +1,2 @@
 export { history } from './history';
-export { default as default } from './component';
+export { default as Router } from './routes';

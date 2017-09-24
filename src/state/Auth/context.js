@@ -8,16 +8,16 @@ const AuthContext = new Context({
   propTypes: {
     user: authStateShape.user
   },
-  mapStateToContext: state => {
+  mapStateToContext: (state) => {
     const userState = state[stateKey];
 
     return {
-      user: userState.user
+      user: userState.user,
     }
   },
   mapDispatchToPublisherProps: (dispatch) => {
     return {
-      showLogin: ({ onSuccessRedirect }) => dispatch(actions.showAuth0({ onSuccessRedirect })),
+      showLogin: ({ onLoginSuccessRoute }) => dispatch(actions.showAuth0({ onLoginSuccessRoute })),
       login: () => dispatch(actions.login()),
       logout: ({ onSuccessRedirect }) => dispatch(actions.logout({ onSuccessRedirect })),
       initializeUser: () => dispatch(actions.initializeUser()),

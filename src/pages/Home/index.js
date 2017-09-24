@@ -2,11 +2,14 @@ import React from 'react';
 
 import ProjectTreeContainer from '../../containers/ProjectTree';
 
-export const Home = () => {
+export const Home = props => {
+
+  const currentRoute = props.match.path;
+
   return (
     <div>
       <h1>Home Page</h1>
-        <ProjectTreeContainer/>
+        <ProjectTreeContainer currentRoute={currentRoute} />
     </div>
   )
 };

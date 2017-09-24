@@ -3,19 +3,17 @@ import decode from 'jwt-decode';
 // auth0
 import { webAuth } from '../../auth0';
 
-// routing
-// todo: why circular dependency
-// import { history } from '../../routing';
-
 // state
 import { actions } from './constants';
+
+// redirect
+import { onLoginSuccessRouteKey } from '../../pages/Auth0Callback/constants';
 
 // storage
 import { getAccessToken } from '../../browserStorage';
 
 
 const accessTokenKey = 'access_token';
-const onAuthSuccessRedirectKey = 'login_redirect_route';
 
 
 export const setUser = ({ id, scope, initialized }) => {
@@ -42,8 +40,12 @@ export const initializeUser = (accessToken = null) => {
   };
 };
 
-export const showAuth0 = ({ onSuccessRedirect }) => {
-  localStorage.setItem(onAuthSuccessRedirectKey, onSuccessRedirect || '/');
+export const showAuth0 = ({ onLoginSuccessRoute }) => {
+  if (!onLoginSuccessRoute) {
+    throw Error('showAuth0 action expects { onLoginSuccessRoute }')
+  }
+
+  localStorage.setItem(onLoginSuccessRouteKey, onLoginSuccessRoute);
   webAuth.authorize();
 };
 
@@ -70,10 +72,6 @@ export const login = () => {
         console.log(err);
       }
 
-      // redirect
-      const redirectPath = localStorage.getItem(onAuthSuccessRedirectKey);
-      localStorage.removeItem(onAuthSuccessRedirectKey);
-      // history.replace(redirectPath);
     });
   }
 };
@@ -88,7 +86,5 @@ export const logout = () => {
       scope: null,
       initialized: true
     }));
-
-    // history.replace('/');
   }
 };
