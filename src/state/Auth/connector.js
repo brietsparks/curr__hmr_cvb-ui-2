@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   return state[stateKey];
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     showLogin: ({ onSuccessRedirect }) => dispatch(actions.showAuth0({ onSuccessRedirect })),
     login: () => dispatch(actions.login()),
@@ -18,3 +18,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default createConnector(mapStateToProps, mapDispatchToProps);
+
+export const connectToAuthState = createConnector(mapStateToProps, dispatch => ({}));
+export const connectToAuthActions = createConnector(state => ({}), mapDispatchToProps);

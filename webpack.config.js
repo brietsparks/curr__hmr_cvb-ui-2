@@ -72,4 +72,12 @@ module.exports = {
     hot: true,
     // enable HMR on the server
   },
+
+  resolve: {
+    extensions: ['.js'],
+    modules: ['node_modules'],
+    alias: {
+      'easy-context': path.resolve(__dirname, 'easy-context')
+    }
+  },
 };

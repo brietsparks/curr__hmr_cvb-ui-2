@@ -24,16 +24,10 @@ export class AuthContainer extends Component {
   }
 
   render() {
-    const { user, children, showLogin, logout, currentUrlPath } = this.props;
+    const { user, children, currentUrlPath } = this.props;
 
-    // inject props into cloned child components
-    const propsForChildren = { showLogin, logout };
 
-    const childrenWithAuthActions = children instanceof Array
-      ? children.map(child => React.cloneElement(child, propsForChildren))
-      : React.cloneElement(children, propsForChildren);
-
-    //
+    // todo: should showLogin, logout be part of context?
     return (
       user.initialized
         ? (
@@ -42,12 +36,10 @@ export class AuthContainer extends Component {
             userIsAuthenticated={!!user.id}
             userScopes={getUserScopes(user)}
           >
-            {childrenWithAuthActions}
+            {children}
           </AuthContextProvider>
         )
-        : (
-          <p>Loading</p>
-        )
+        : <p>Loading</p>
 
     );
   }

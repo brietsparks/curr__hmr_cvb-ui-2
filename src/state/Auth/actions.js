@@ -4,7 +4,8 @@ import decode from 'jwt-decode';
 import { webAuth } from '../../auth0';
 
 // routing
-import { history } from '../../routing';
+// todo: why circular dependency
+// import { history } from '../../routing';
 
 // state
 import { actions } from './constants';
@@ -72,12 +73,12 @@ export const login = () => {
       // redirect
       const redirectPath = localStorage.getItem(onAuthSuccessRedirectKey);
       localStorage.removeItem(onAuthSuccessRedirectKey);
-      history.replace(redirectPath);
+      // history.replace(redirectPath);
     });
   }
 };
 
-export const logout = ({ onSuccessRedirect }) => {
+export const logout = () => {
   return dispatch => {
     localStorage.removeItem(accessTokenKey);
     localStorage.removeItem('expires_at');
@@ -88,6 +89,6 @@ export const logout = ({ onSuccessRedirect }) => {
       initialized: true
     }));
 
-    history.replace(onSuccessRedirect || '/');
+    // history.replace('/');
   }
 };

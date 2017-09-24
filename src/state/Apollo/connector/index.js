@@ -34,6 +34,7 @@ const withCreateProjectMutation = graphql(createProject, {
 export const apolloConnector = InnerComponent => {
 
   const ConnectedComponent = compose(
+
     withProjectsQuery,
     withCreateProjectMutation
   )(InnerComponent);
