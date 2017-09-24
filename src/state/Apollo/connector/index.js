@@ -8,10 +8,10 @@ import createProject from '../../../graphql/mutations/createProject.graphql';
 const withProjectsQuery = graphql(ProjectsByUserId, {
   options: ownProps => {
     return {
-      variables: { user_id: ownProps.userId },
+      variables: { user_id: ownProps.user.id },
     }
   },
-  skip: ownProps => !ownProps.userIsAuthenticated
+  skip: ownProps => !ownProps.user.id
 });
 
 const withCreateProjectMutation = graphql(createProject, {

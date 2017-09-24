@@ -14,7 +14,7 @@ export const AuthGuard = props => {
   const { user, guestRender, children } = props;
 
   return !!user.id
-    ? <span>{ children }</span>
+    ? <div>{ children }</div>
     : guestRender()
   ;
 };
